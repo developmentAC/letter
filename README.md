@@ -1,4 +1,4 @@
-# Letter: An ASCII art generator program. Covert strings to huge ASCII letter banners for project splash screens.
+# Letter: An ASCII art generator program. Convert strings to huge ASCII letter banners for project splash screens.
 
 ![Logo](graphics/logo.png)
 
