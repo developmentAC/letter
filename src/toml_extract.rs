@@ -16,6 +16,12 @@ struct CargoToml {
 }
 
 fn parse_cargo_toml(file_path: &str) {
+    // Check if the file exists
+    if !std::path::Path::new(file_path).exists() {
+        eprintln!("\t Cargo.toml file not found;\n\t Cannot display version information.\n");
+        return;
+    }
+
     // Read the content of the Cargo.toml file
     let content = fs::read_to_string(file_path).expect("Failed to read Cargo.toml file");
 
@@ -23,10 +29,6 @@ fn parse_cargo_toml(file_path: &str) {
     let cargo_toml: CargoToml = from_str(&content).expect("Failed to parse Cargo.toml");
 
     // Print the extracted package information
-    // println!("\t Package Name: {}", cargo_toml.package.name);
-    // println!("\t Package Version: {}", cargo_toml.package.version);
-    // println!("\t Package Edition: {}", cargo_toml.package.edition);
-
     let out_message_0 = format!("\t Package name: '{}'.", cargo_toml.package.name);
     colour_print(&out_message_0, "purple");
 
