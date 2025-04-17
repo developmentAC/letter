@@ -59,7 +59,7 @@ This `README.md` file provides a comprehensive explanation of the project, inclu
    ```bash
    ./target/release/letter hello
 
-And you will see the following output:
+And you will see the following output (which is also saved to a file in `0_out/`:
 
    ``` bash
 ██╗  ██╗███████╗██╗     ██╗      ██████╗ 
@@ -144,24 +144,10 @@ For example:
 ### Warnings
 
 If a character in the input string is not found in the `HashMap`, the program prints a warning message. For example:
+
 ```text
 Warning: Character '$' not found in letter data.
 ```
-
-## Example Output
-
-For the input string `HELLO`, the program generates the following ASCII art:
-
-```text
-██╗  ██╗███████╗██╗     ██╗      ██████╗ 
-██║  ██║██╔════╝██║     ██║     ██╔═══██╗
-███████║█████╗  ██║     ██║     ██║   ██║
-██╔══██║██╔══╝  ██║     ██║     ██║   ██║
-██║  ██║███████╗███████╗███████╗╚██████╔╝
-╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ 
-```
-
-The output is saved to the specified file in the `0_out/` directory.
 
 ## Adding More Characters
 
