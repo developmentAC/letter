@@ -540,6 +540,17 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
             "╚══════╝  ",
         ],
     );
+    map.insert(
+        '-',
+        vec![
+            "          ",
+            "          ",
+            "███████╗  ",
+            "╚══════╝  ",
+            "          ",
+            "          ",
+        ],
+    );
     
 
     map
