@@ -1,10 +1,10 @@
 // Begin by importing necessary crates and modules
 use clap::{Arg, Command}; // For parsing command-line arguments
+use colored::Colorize;
 use std::collections::HashMap; // For storing letter data in a map
 use std::fs; // For file and directory operations
-use std::path::{Path, PathBuf}; // For working with file paths
-use colored::Colorize;
-use std::io::Write; // For flushing output to the console
+use std::io::Write;
+use std::path::{Path, PathBuf}; // For working with file paths // For flushing output to the console
 
 use std::io;
 
@@ -28,12 +28,11 @@ fn show_banner() {
 \t     ╚══════╝   ╚══════╝      ╚═╝         ╚═╝      ╚══════╝   ╚═╝  ╚═╝ 
 
 ",
-);
+    );
 
     // Print the banner in purple color
     colour_print(&banner, "cyan")
 }
-
 
 // Print colored text to the console
 fn colour_print(text: &str, colour: &str) {
@@ -88,25 +87,24 @@ fn colour_print(text: &str, colour: &str) {
 }
 
 fn main() {
-        // Show the banner
-        show_banner();
+    // Show the banner
+    show_banner();
 
-        // Display version information from the toml file
-        toml_extract::main();
-    
-        // Print a welcome message and quick help instruction
-        let msg = format!(
-            "Welcome to Letter, an ASCII letter writer!\n\t Use: \"cargo run -- --bighelp\" for quick help."
-        );
-        println!("\t {}", msg.bright_yellow().bold());
-        println!(
-            "\t {}",
-            "-------------------------------------------------\n"
-                .bright_yellow()
-                .bold()
-        );
-    
-    
+    // Display version information from the toml file
+    toml_extract::main();
+
+    // Print a welcome message and quick help instruction
+    let msg = format!(
+        "Welcome to Letter, an ASCII letter writer!\n\t Use: \"cargo run -- --bighelp\" for quick help."
+    );
+    println!("\t {}", msg.bright_yellow().bold());
+    println!(
+        "\t {}",
+        "-------------------------------------------------\n"
+            .bright_yellow()
+            .bold()
+    );
+
     // Step 1: Set up command-line argument parsing
     let matches = Command::new("Letter Maker")
         .version("1.0")
@@ -167,7 +165,7 @@ fn main() {
         }
     }
     // add a line at the end of the output
-    output_lines.push('\n'.to_string()); 
+    output_lines.push('\n'.to_string());
 
     // Step 6: Ensure the output directory exists
     ensure_output_directory_exists("0_out");
@@ -181,12 +179,22 @@ fn main() {
     } else {
         println!("Output saved to {}", output_path.display());
     }
-}
 
+    // Print the output to the console
+    println!(
+        "\n {} \n",
+        "Your output is the following:".bright_yellow().bold()
+    );
+    for line in output_lines {
+        println!("{}", line.bright_cyan().bold());
+    }
+}
 
 // Print out the help message
 fn get_big_help() {
-    let msg = format!("\n\t cargo run -- --output letter.md letter").bright_cyan().bold();
+    let msg = format!("\n\t cargo run -- --output letter.md letter")
+        .bright_cyan()
+        .bold();
     println!("{}", msg);
 }
 
@@ -315,7 +323,13 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
     );
     map.insert(
         'I',
-        vec!["██╗  ", "██║  ", "██║  ", "██║  ", "██║  ", "╚═╝  "],
+        vec![
+            "██╗  ",
+            "██║  ",
+            "██║  ",
+            "██║  ",
+            "██║  ",
+            "╚═╝  "],
     );
     map.insert(
         'J',
@@ -507,16 +521,22 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
     map.insert(
         '!',
         vec![
-        " ██╗  ",
-        " ██║  ", 
-        " ██║  ", 
-        "      ", 
-        " ██║  ", 
-        " ╚═╝  "],
+            " ██╗  ",
+            " ██║  ",
+            " ██║  ",
+            "      ",
+            " ██║  ",
+            " ╚═╝  "],
     );
     map.insert(
         '.',
-        vec!["     ", "     ", "     ", "     ", " ██  ", " ╚═╝ "],
+        vec![
+            "     ",
+            "     ",
+            "     ",
+            "     ",
+            " ██  ",
+            " ╚═╝ "],
     );
     map.insert(
         '@',
@@ -551,7 +571,6 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
             "          ",
         ],
     );
-    
 
     map
 }
