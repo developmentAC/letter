@@ -535,7 +535,7 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
             "     ",
             "     ",
             "     ",
-            " ██  ",
+            " ██║  ",
             " ╚═╝ "],
     );
     map.insert(
@@ -569,6 +569,17 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
             "╚══════╝  ",
             "          ",
             "          ",
+        ],
+    );
+    map.insert( //comma
+        '\'',
+        vec![
+            "  ██╗ ",
+            " ██╔╝ ",
+            "██╔╝  ",
+            "      ",
+            "      ",
+            "      ",
         ],
     );
 
