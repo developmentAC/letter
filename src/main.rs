@@ -179,14 +179,14 @@ fn main() {
     } else {
         // Print the output to the console
         let msg = format!(
-            "\t Your output has been saved to: {}",
+            "\t + Your output has been saved to: {}",
             output_path.display()
         );
-        colour_print(&msg, "green_noLineFeed");
+        colour_print(&msg, "cyan");
 
         println!(
             "\n{}\n",
-            "\t The output is the following:".bright_yellow().bold()
+            "\t + The output is the following:".bright_cyan().bold()
         )
 
         // println!("Output saved to {}", output_path.display());
