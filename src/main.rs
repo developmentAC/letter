@@ -177,14 +177,21 @@ fn main() {
     if let Err(e) = fs::write(&output_path, output_lines.join("\n")) {
         eprintln!("Error writing to file {}: {}", output_path.display(), e);
     } else {
-        println!("Output saved to {}", output_path.display());
+        // Print the output to the console
+        let msg = format!(
+            "\t Your output has been saved to: {}",
+            output_path.display()
+        );
+        colour_print(&msg, "green_noLineFeed");
+
+        println!(
+            "\n{}\n",
+            "\t The output is the following:".bright_yellow().bold()
+        )
+
+        // println!("Output saved to {}", output_path.display());
     }
 
-    // Print the output to the console
-    println!(
-        "\n {} \n",
-        "Your output is the following:".bright_yellow().bold()
-    );
     for line in output_lines {
         println!("{}", line.bright_cyan().bold());
     }
@@ -571,17 +578,29 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
             "          ",
         ],
     );
-    map.insert( //comma
+    map.insert(
+        //comma
+        ':',
+        vec![
+            "      ",
+            "███╗  ",
+            "╚══╝  ",
+            "███╗  ",
+            "╚══╝  ",
+            "      "
+            ],
+    );
+
+    map.insert(
+        //colon
         '\'',
         vec![
             "  ██╗ ",
             " ██╔╝ ",
             "██╔╝  ",
+            "╚═╝   ",
             "      ",
-            "      ",
-            "      ",
-        ],
+            "      "],
     );
-
     map
 }
