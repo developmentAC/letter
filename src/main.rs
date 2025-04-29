@@ -144,7 +144,16 @@ fn main() {
     }
 
     // Step 2: Get the input string from the command-line arguments
-    let input = matches.get_one::<String>("input").unwrap().to_uppercase();
+    let input = matches.get_one::<String>("input").map(|s| s.to_uppercase());
+
+    // Handle the case where no input is provided
+    let input = match input {
+        Some(value) => value,
+        None => {
+            eprintln!("Error: No input provided. Please specify a string to convert to ASCII art.");
+            return;
+        }
+    };
 
     // Step 3: Get the output filename
     let output_filename = matches.get_one::<String>("output").unwrap();
