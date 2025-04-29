@@ -150,7 +150,14 @@ fn main() {
     let input = match input {
         Some(value) => value,
         None => {
-            eprintln!("Error: No input provided. Please specify a string to convert to ASCII art.");
+            // Print a message to the console
+
+            let msg = format!(
+                "\t + Error: No input provided. Please specify a string to convert to ASCII art."
+            )
+            .bright_green()
+            .bold();
+            eprintln!("{}", msg);
             return;
         }
     };
@@ -339,13 +346,7 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
     );
     map.insert(
         'I',
-        vec![
-            "██╗  ",
-            "██║  ",
-            "██║  ",
-            "██║  ",
-            "██║  ",
-            "╚═╝  "],
+        vec!["██╗  ", "██║  ", "██║  ", "██║  ", "██║  ", "╚═╝  "],
     );
     map.insert(
         'J',
@@ -536,23 +537,11 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
     );
     map.insert(
         '!',
-        vec![
-            " ██╗  ",
-            " ██║  ",
-            " ██║  ",
-            "      ",
-            " ██║  ",
-            " ╚═╝  "],
+        vec![" ██╗  ", " ██║  ", " ██║  ", "      ", " ██║  ", " ╚═╝  "],
     );
     map.insert(
         '.',
-        vec![
-            "     ",
-            "     ",
-            "     ",
-            "     ",
-            " ██║  ",
-            " ╚═╝ "],
+        vec!["     ", "     ", "     ", "     ", " ██║  ", " ╚═╝ "],
     );
     map.insert(
         '@',
@@ -590,26 +579,13 @@ fn get_letter_data() -> HashMap<char, Vec<&'static str>> {
     map.insert(
         //comma
         ':',
-        vec![
-            "      ",
-            "███╗  ",
-            "╚══╝  ",
-            "███╗  ",
-            "╚══╝  ",
-            "      "
-            ],
+        vec!["      ", "███╗  ", "╚══╝  ", "███╗  ", "╚══╝  ", "      "],
     );
 
     map.insert(
         //colon
         '\'',
-        vec![
-            "  ██╗ ",
-            " ██╔╝ ",
-            "██╔╝  ",
-            "╚═╝   ",
-            "      ",
-            "      "],
+        vec!["  ██╗ ", " ██╔╝ ", "██╔╝  ", "╚═╝   ", "      ", "      "],
     );
     map
 }
